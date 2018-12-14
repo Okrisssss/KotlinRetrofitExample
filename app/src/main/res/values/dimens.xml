@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--TEXT SIZE-->
+    <dimen name="text_size_9sp">9sp</dimen>
+    <dimen name="text_size_10sp">10sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_30sp">30sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+
+    <!-- MARGINS-->
+    <dimen name="margin_0dp">0dp</dimen>
+    <dimen name="margin_1dp">1dp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_12dp">12dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="margin_30dp">30dp</dimen>
+    <dimen name="margin_45dp">45dp</dimen>
+    <dimen name="margin_48dp">48dp</dimen>
+    <dimen name="margin_50dp">50dp</dimen>
+    <dimen name="margin_56dp">56dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_100dp">100dp</dimen>
+    <dimen name="margin_135dp">135dp</dimen>
+    <dimen name="margin_140dp">140dp</dimen>
+    <dimen name="margin_150dp">150dp</dimen>
+    <dimen name="margin_170dp">170dp</dimen>
+    <dimen name="margin_200dp">200dp</dimen>
+    <dimen name="margin_250dp">250dp</dimen>
+    <dimen name="margin_256dp">256dp</dimen>
+    <dimen name="margin_300dp">300dp</dimen>
+
+
+    <!-- ICONS SIZE-->
+    <dimen name="icon_size">20dp</dimen>
+
+    <!-- ELEVATION-->
+    <dimen name="elevation_5dp">5dp</dimen>
+    <dimen name="elevation_15dp">15dp</dimen>
+    <dimen name="corner_radius_10dp">10dp</dimen>
+    <dimen name="margin_3dp">3dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+
+</resources>

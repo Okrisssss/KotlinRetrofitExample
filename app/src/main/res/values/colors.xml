@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#37474F</color>
+    <color name="colorPrimaryDark">#37474F</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="locationTextColor">#8c8b8b</color>
+    <color name="mainAppColor">#e7455f</color>
+    <color name="highlightColor">#af9cd6</color>
+    <color name="mainAppColorDark">#970b4f</color>
+    <color name="mainAppColorLight">#d80e70</color>
+    <color name="appColorAccent">#FFA711</color>
+    <color name="borderColorLight">#B0BEC5</color>
+    <color name="trans">#cc898286</color>
+    <color name="mainTextColor">#2E2D2D</color>
+    <color name="shadowTextColor">#707070</color>
+    <color name="tabTextColor">#263238</color>
+    <color name="secondaryTextColor">#37474F</color>
+    <color name="lightTextColor">#90A4AE</color>
+    <color name="mainLineColor">#8190a4ae</color>
+    <color name="lineColor">#4b90a4ae</color>
+    <color name="divider_color">#cc8c8a8c</color>
+    <color name="white_color">#ccffffff</color>
+</resources>
