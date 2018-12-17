@@ -20,5 +20,5 @@ class MainActivityModule(private  val mainActivity: MainActivity) {
 
     @ActivityScope
     @Provides
-    fun provideMainActivityRecyclerAdapter(picasso: Picasso): MainActivityRecyclerAdapter = MainActivityRecyclerAdapter(mainActivity,picasso)
+    fun provideMainActivityRecyclerAdapter(picasso: Picasso, mainActivityPresenter: MainActivityPresenter): MainActivityRecyclerAdapter = MainActivityRecyclerAdapter(mainActivity,picasso, mainActivityPresenter)
 }

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/updateHeroNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,10 +17,10 @@
         />editName
 
     <android.support.v7.widget.AppCompatRatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/updateHeroRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editName"
+        app:layout_constraintTop_toBottomOf="@id/updateHeroNameEditText"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/margin_12dp"
         android:max="5"

@@ -1,12 +1,10 @@
 package com.example.piachimov.firebasekotlinexample.ui.function1
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.EditText
+import android.view.View
 import android.widget.LinearLayout
-import android.widget.RatingBar
 import com.example.piachimov.firebasekotlinexample.R
 import com.example.piachimov.firebasekotlinexample.di.Injector
 import com.example.piachimov.firebasekotlinexample.model.Hero
@@ -31,16 +29,15 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         Injector.mainActivityComponent?.inject(this)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         initRecyclerView()
-        rateButton.setOnClickListener {
 
-            mainActivityPresenter.saveData(editName.text.toString(), ratingBar.rating.toString())
-            heroList = mainActivityPresenter.getDataFromfirebaseDatabas()
-            recyclerAdapter.showList(heroList)
-            heroList.clear()
-        }
-//        updateButton.setOnClickListener {
-//            showRatingDialog(hero)
-//        }
+
+    }
+
+
+    fun onClickRateButton(view: View){
+        mainActivityPresenter.saveData(editName.text.toString(), ratingBar.rating.toString())
+        heroList = mainActivityPresenter.getDataFromfirebaseDatabas()
+        recyclerAdapter.showList(heroList)
     }
 
     override fun onSuccess(message: String) {
@@ -52,26 +49,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         recyclerView.adapter = recyclerAdapter
     }
 
+    override fun onListUpdated(list: ArrayList<Hero>) {
+        recyclerAdapter.showList(list)
+    }
 
-//    fun showRatingDialog(hero: Hero) {
-//        val popDialog = AlertDialog.Builder(this)
-//        var ratingBar = RatingBar(this)
-//        var updateHeroName = EditText(this)
-//        ratingBar.rating = hero.rating.toFloat()
-//        updateHeroName.setText(hero.name)
-//        val view = layoutInflater.inflate(R.layout.update_layout, null)
-//        popDialog.setTitle("Update heroes data")
-//        popDialog.setView(view)
-//        popDialog.setPositiveButton("Update") { dialog, which ->
-//            mainActivityPresenter.updateHeroesData(hero,updateHeroName.toString(),ratingBar.toString() )
-//
-//        }
-//        popDialog.setNegativeButton("No") { dialog, which ->
-//            dialog.cancel()
-//        }
-//        popDialog.create()
-//        popDialog.show()
-//    }
 
     override fun onDestroy() {
         Injector.releaseMainActivityComponent()

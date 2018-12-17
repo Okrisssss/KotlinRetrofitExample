@@ -8,7 +8,6 @@ import com.example.piachimov.firebasekotlinexample.di.component.MainActivityComp
 import com.example.piachimov.firebasekotlinexample.di.module.AppModule
 import com.example.piachimov.firebasekotlinexample.di.module.MainActivityModule
 import com.example.piachimov.firebasekotlinexample.ui.function1.MainActivity
-import com.squareup.picasso.Picasso
 
 object Injector {
 
@@ -21,7 +20,7 @@ object Injector {
                 .build()
     }
 
-    fun  initMainActivityComponent(mainActivity: MainActivity){
+    fun initMainActivityComponent(mainActivity: MainActivity) {
         mainActivityComponent = mainActivityComponent ?: DaggerMainActivityComponent.builder()
                 .appComponent(appComponent)
                 .mainActivityModule(MainActivityModule(mainActivity))
@@ -29,7 +28,7 @@ object Injector {
     }
 
 
-    fun releaseMainActivityComponent(){
+    fun releaseMainActivityComponent() {
         mainActivityComponent = null
     }
 }
