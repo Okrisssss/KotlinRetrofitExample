@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.function1.MainActivity"
+    tools:context=".ui.main.MainActivity"
 
     android:layout_marginTop="@dimen/margin_25dp"
     android:layout_marginStart="@dimen/margin_25dp"

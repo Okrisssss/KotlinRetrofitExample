@@ -1,14 +1,14 @@
-package com.example.piachimov.firebasekotlinexample.ui.function1
+package com.example.piachimov.firebasekotlinexample.ui.main
 
-import android.app.AlertDialog
 import android.content.Context
-import android.view.LayoutInflater
-import android.widget.EditText
-import android.widget.RatingBar
-import android.widget.Toast
-import com.example.piachimov.firebasekotlinexample.R
+import android.os.Build
+import android.support.v4.content.PermissionChecker.checkSelfPermission
+import com.example.piachimov.firebasekotlinexample.Manifest
 import com.example.piachimov.firebasekotlinexample.di.Injector
 import com.example.piachimov.firebasekotlinexample.model.Hero
+import com.example.piachimov.firebasekotlinexample.ui.login.LoginActivity
+import com.example.piachimov.firebasekotlinexample.utils.ScreenNavigation
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener
 
 class MainActivityPresenter(var mainActivityView: MainActivityView, var context: Context) {
 
+    private val mAuth: FirebaseAuth? = Injector.appComponent?.firebaseAuth()
     private val firebaseDatabas: FirebaseDatabase? = Injector.appComponent?.firebaseDatabase()
     private val ref = firebaseDatabas?.getReference("heroes")
     var heroList: ArrayList<Hero> = arrayListOf()
@@ -33,6 +34,7 @@ class MainActivityPresenter(var mainActivityView: MainActivityView, var context:
             override fun onCancelled(p0: DatabaseError) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot!!.exists()) {
                     heroList.clear()
@@ -43,23 +45,28 @@ class MainActivityPresenter(var mainActivityView: MainActivityView, var context:
                     mainActivityView.onListUpdated(heroList)
                 }
             }
-
         })
         return heroList
     }
 
-    fun updateHeroesData(hero: Hero,name: String, rating: String) {
-       val hero = Hero(hero.id, name, rating)
-       ref?.child(hero.id)!!.setValue(hero)
-        mainActivityView.onSuccess("Hero was updated")
-
+    fun deleteHeroItem(hero: Hero) {
+        ref?.child(hero.id)?.removeValue()
+        mainActivityView.onItemDeleted(heroList)
+        heroList.clear()
     }
 
+    fun logOut(){
+        mAuth?.signOut()
+        ScreenNavigation.switchActivity(context, LoginActivity::class.java)
+    }
+
+
+    fun checkPermission(){
+    }
 
     fun setUpMainActivityView(mainActivityView: MainActivityView) {
         this.mainActivityView = mainActivityView
     }
-
 
 
 }

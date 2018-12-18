@@ -1,8 +1,10 @@
-package com.example.piachimov.firebasekotlinexample.ui.function1
+package com.example.piachimov.firebasekotlinexample.ui.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import com.example.piachimov.firebasekotlinexample.R
@@ -13,6 +15,7 @@ import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainActivityView {
+
 
     @Inject
     lateinit var mainActivityPresenter: MainActivityPresenter
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         recyclerAdapter.showList(heroList)
     }
 
+
     override fun onSuccess(message: String) {
         toast(message)
     }
@@ -53,6 +57,21 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         recyclerAdapter.showList(list)
     }
 
+    override fun onItemDeleted(list: ArrayList<Hero>) {
+        recyclerAdapter.showList(list)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item!!.itemId == R.id.menu_logout){
+            mainActivityPresenter.logOut()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onDestroy() {
         Injector.releaseMainActivityComponent()

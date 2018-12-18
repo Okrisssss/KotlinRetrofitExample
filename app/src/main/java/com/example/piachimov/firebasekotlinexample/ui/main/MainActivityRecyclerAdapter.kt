@@ -1,9 +1,11 @@
-package com.example.piachimov.firebasekotlinexample.ui.function1
+package com.example.piachimov.firebasekotlinexample.ui.main
 
 import android.app.AlertDialog
 import android.content.Context
+import android.support.constraint.R.id.parent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -19,6 +21,26 @@ import com.squareup.picasso.Picasso
 class MainActivityRecyclerAdapter(var context: Context, var picasso: Picasso, var mainActivityPresenter: MainActivityPresenter) : RecyclerView.Adapter<MainActivityRecyclerAdapter.ViewHolder>() {
 
 
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
+        val view = LayoutInflater.from(p0.context).inflate(R.layout.heroe_item, p0, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
+        val heroPosition = list[p1]
+        p0?.textViewHeroName?.text = heroPosition.name
+        p0?.heroRating?.rating = heroPosition.rating.toFloat()
+        p0?.rating?.text = heroPosition.rating
+        p0?.update?.setOnClickListener {
+            showRatingDialog(heroPosition)
+        }
+
+        p0?.delete?.setOnClickListener {
+            mainActivityPresenter.deleteHeroItem(heroPosition)
+        }
+    }
+
+
     var list = ArrayList<Hero>()
 
 
@@ -27,31 +49,15 @@ class MainActivityRecyclerAdapter(var context: Context, var picasso: Picasso, va
         val heroRating = itemView.findViewById<RatingBar>(R.id.heroRating)!!
         val rating = itemView.findViewById<TextView>(R.id.rating)!!
         val update = itemView.findViewById<TextView>(R.id.update)!!
+        val delete = itemView.findViewById<TextView>(R.id.delete)!!
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.heroe_item, parent, false)
-        return ViewHolder(view)
-    }
 
     fun showList(items: ArrayList<Hero>) {
         this.list = items
         notifyDataSetChanged()
     }
 
-
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        val heroPosition = list[position]
-        holder?.textViewHeroName?.text = heroPosition.name
-        holder?.heroRating?.rating = heroPosition.rating.toFloat()
-        holder?.rating?.text = heroPosition.rating
-        holder?.update?.setOnClickListener {
-            //showRatingDialog(heroPosition)
-            showRatingDialog(heroPosition)
-           list= mainActivityPresenter.getDataFromfirebaseDatabas()
-            showList(list)
-        }
-    }
 
 
 
@@ -93,9 +99,6 @@ class MainActivityRecyclerAdapter(var context: Context, var picasso: Picasso, va
             dbHero.child(heroPosition.id).setValue(newHero)
 
             Toast.makeText(context, "Hero updated", Toast.LENGTH_SHORT)
-
-
-
 
         }
         popDialog.setNegativeButton("No") { dialog, which ->
