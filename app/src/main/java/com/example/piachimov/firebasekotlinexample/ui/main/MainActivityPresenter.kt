@@ -13,6 +13,13 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.facebook.login.LoginManager
+import com.facebook.GraphResponse
+import com.facebook.GraphRequest
+import com.facebook.HttpMethod
+import com.facebook.AccessToken
+
+
 
 class MainActivityPresenter(var mainActivityView: MainActivityView, var context: Context) {
 
@@ -32,7 +39,7 @@ class MainActivityPresenter(var mainActivityView: MainActivityView, var context:
     fun getDataFromfirebaseDatabas(): ArrayList<Hero> {
         ref?.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -61,7 +68,13 @@ class MainActivityPresenter(var mainActivityView: MainActivityView, var context:
     }
 
 
-    fun checkPermission(){
+    fun disconnectFromFacebook() {
+
+        if (AccessToken.getCurrentAccessToken() == null) {
+            return  // already logged out
+        }
+
+        GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, GraphRequest.Callback { LoginManager.getInstance().logOut() }).executeAsync()
     }
 
     fun setUpMainActivityView(mainActivityView: MainActivityView) {

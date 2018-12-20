@@ -36,8 +36,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     }
 
-
-    fun onClickRateButton(view: View){
+    fun onClickRateButton(view: View) {
         mainActivityPresenter.saveData(editName.text.toString(), ratingBar.rating.toString())
         heroList = mainActivityPresenter.getDataFromfirebaseDatabas()
         recyclerAdapter.showList(heroList)
@@ -67,8 +66,9 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item!!.itemId == R.id.menu_logout){
+        if (item!!.itemId == R.id.menu_logout) {
             mainActivityPresenter.logOut()
+            mainActivityPresenter.disconnectFromFacebook()
         }
         return super.onOptionsItemSelected(item)
     }

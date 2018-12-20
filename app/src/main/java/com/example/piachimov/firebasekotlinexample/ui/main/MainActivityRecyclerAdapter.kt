@@ -74,7 +74,6 @@ class MainActivityRecyclerAdapter(var context: Context, var picasso: Picasso, va
 
     fun showRatingDialog(heroPosition: Hero) {
         val popDialog = AlertDialog.Builder(context)
-        val ratingBar = RatingBar(context)
         val updateHeroName = EditText(context)
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.update_layout, null )

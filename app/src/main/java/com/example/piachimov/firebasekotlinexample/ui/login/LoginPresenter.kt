@@ -5,12 +5,14 @@ import android.widget.Toast
 import com.example.piachimov.firebasekotlinexample.di.Injector
 import com.example.piachimov.firebasekotlinexample.ui.main.MainActivity
 import com.example.piachimov.firebasekotlinexample.utils.ScreenNavigation
+import com.facebook.CallbackManager
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginPresenter(var loginView: LoginView, var context: Context) {
 
 
     val mAuth: FirebaseAuth? = Injector.appComponent?.firebaseAuth()
+    lateinit var callbackManager: CallbackManager
 
     fun onLogin(email: String, password: String, loginActivity: LoginActivity) {
         if (!email.isEmpty() && !password.isEmpty()) {

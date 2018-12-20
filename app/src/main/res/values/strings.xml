@@ -8,4 +8,7 @@
     <string name="registration_screen">Registration screen</string>
     <string name="login_screen">Login screen</string>
     <string name="have_account">Don\'t have account?</string>
+    <string name="facebook_app_id">354403562044197</string>
+    <string name="fb_login_protocol_scheme">fb354403562044197</string>
+
 </resources>
